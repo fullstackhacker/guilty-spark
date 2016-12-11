@@ -17,9 +17,6 @@ _.each(sites, function(site){
     if (err){
       twilio.sendTextAlerts(message);
     }
-    if (res){
-      twilio.sendTextAlerts(message);
-    }
     console.log(message);
   });
 });
