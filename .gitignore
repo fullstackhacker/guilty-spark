@@ -3,3 +3,4 @@ node_modules/
 config/websites.json
 config/contacts.json
 .DS_Store
+.*.*

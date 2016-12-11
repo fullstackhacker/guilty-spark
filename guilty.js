@@ -1,42 +1,27 @@
 'use strict';
 
-var cron = require('cron');
-var request = require('request');
-var cheerio = require('cheerio');
-var config = require('./config');
-var moment = require('moment');
-var _ = require('lodash');
+const request = require('request');
+const moment = require('moment-timezone');
+const _ = require('lodash');
 
-var twilio = config.twilio;
-var sites = config.sites;
+const config = require('./config');
+const twilio =  config.twilio;
+const sites = config.sites;
 
-var workerNumber = 0;
+const momentDateFormat = "MM/DD/YYYY - hh:mm A";  // month/date/year - hour:minute  [am|pm]
 
-var cronJob = cron.job("0 0 */4 * * *", function(){
-    workerNumber += 1;
-    _.each(sites, function(site){
-        request(site.url, function(err, res, body){
-            const worker = workerNumber;
-            if(err){
-                let message = site.displayName + ": " + err + " " + new moment().format("MM/DD/YYYY - HH:mm");
-                twilio.sendTextAlerts(message)
-                console.log(worker + ": " + message);
-            }
-            else{
-                var $ = cheerio.load(body);
-                
-                if($('title').text() === site.title){
-                    let message = worker + " " + site.displayName + " UP AT: " +  new moment().format("MM/DD/YYYY - HH:mm");
-                    console.log(message);
-                }
-                else{
-                    let message = site.displayName + " DOWN AT: " + new moment().format("MM/DD/YYYY - HH:mm");
-                    twilio.sendTextAlerts(message)
-                    console.log(worker + ": " + message);
-                }
-            }
-        });
-    });
+_.each(sites, function(site){
+  request(site.url, function(err, res, body){
+    const datetimeStamp = new moment().tz("America/Los_Angeles").format(momentDateFormat);
+    let message;
+    if (err){
+      message = `${site.displayName}: ${res.statsuCode} ${datetimeStamp}`;
+      twilio.sendTextAlerts(message);
+    }
+    if (res){
+      message = `${site.displayName}: ${res.statusCode} OK ${datetimeStamp}`;
+      twilio.sendTextAlerts(message);
+    }
+    console.log(message);
+  });
 });
-
-cronJob.start();
