@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": ". ../../scripts/dev_env.sh && node guilty.js",
-    "v2": ". ../../scripts/dev_env.sh && node guilty_v2.js",
     "start": ". ../../scripts/prod_env.sh && node guilty.js",
     "deploy": "ssh mush < deploy.sh"
   },

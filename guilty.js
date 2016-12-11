@@ -13,18 +13,13 @@ const momentDateFormat = "MM/DD/YYYY - hh:mm A";  // month/date/year - hour:minu
 _.each(sites, function(site){
   request(site.url, function(err, res, body){
     const datetimeStamp = new moment().tz("America/Los_Angeles").format(momentDateFormat);
-    let message;
+    const message = `${site.displayName}: ${res.statusCode} ${datetimeStamp}`;
     if (err){
-      message = `${site.displayName}: ${res.statsuCode} ${datetimeStamp}`;
       twilio.sendTextAlerts(message);
     }
     if (res){
-      message = `${site.displayName}: ${res.statusCode} OK ${datetimeStamp}`;
       twilio.sendTextAlerts(message);
     }
     console.log(message);
   });
 });
-
-
-console.log("Check Completed!");
