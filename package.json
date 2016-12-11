@@ -4,7 +4,7 @@
   "description": "Website Monitoring",
   "main": "index.js",
   "scripts": {
-    "dev": ". ../scripts/dev.sh && node app.js",
+    "dev": ". ../../scripts/dev_env.sh && node app.js",
     "start": ". ../../scripts/prod_env.sh && node app.js",
     "deploy": "ssh mush < deploy.sh"
   },
