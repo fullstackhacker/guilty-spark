@@ -11,4 +11,5 @@ ln -snf `pwd`/$NEW_PROD current
 
 cd current
 
-npm start > /var/log/guilty-spark/guilty-spark.log
+npm start > /var/log/guilty-spark/guilty-spark.log&
+echo "DONE!"
