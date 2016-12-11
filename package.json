@@ -1,0 +1,26 @@
+{
+  "name": "guilty-sparks",
+  "version": "0.0.0",
+  "description": "Website Monitoring",
+  "main": "index.js",
+  "scripts": {
+    "start": ". ./scripts/env.sh && node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kapadiamush/guilty-spark"
+  },
+  "author": "Mushaheed Kapadia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kapadiamush/guilty-spark/issues"
+  },
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "cron": "^1.1.0",
+    "lodash": "^4.0.0",
+    "moment": "^2.11.1",
+    "request": "^2.67.0",
+    "twilio": "^2.8.0"
+  }
+}
