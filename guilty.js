@@ -25,3 +25,6 @@ _.each(sites, function(site){
     console.log(message);
   });
 });
+
+
+console.log("Check Completed!");
