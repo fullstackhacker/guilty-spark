@@ -76,7 +76,7 @@ It took me quite a while to get this setup with cron. I'm not super familiar wit
 Here's an abstracted version of the command:
 
 ```
-1 */1 * * * [user] ([cd path/to/guilty-spark] && [. path/to/guilty-spark-env] && [path/to/node] guilty.js [> /var/log/guilty-spark/guilty.spark.log])
+1 */1 * * * [user] ([cd path/to/guilty-spark] && [. path/to/guilty-spark-env] && [path/to/node] guilty.js [>> /var/log/guilty-spark/guilty.spark.log])
 ```
 
 `NOTE`: `user` is only valid if you throw this in `/etc/crontab` instead of `crontab -e`.
