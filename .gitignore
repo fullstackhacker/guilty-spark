@@ -1,6 +1,6 @@
 node_modules/
 *.log
-config/websites.json
-config/contacts.json
+websites.json
+contacts.json
 .DS_Store
 .*.*

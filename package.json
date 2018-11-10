@@ -1,6 +1,6 @@
 {
   "name": "guilty-sparks",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Website Monitoring",
   "main": "index.js",
   "scripts": {
